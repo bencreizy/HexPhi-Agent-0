@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HexPhi // Sovereign Lattice Dashboard</title>
+    <link rel="stylesheet" href="theme.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="lattice-container">
+        <!-- Main Logic Feed (Phi Dominant) -->
+        <div class="lattice-panel" id="panel-central">
+            <div class="hud-corner tl"></div>
+            <div class="hud-corner tr"></div>
+            <div class="hud-corner bl"></div>
+            <div class="hud-corner br"></div>
+            <div class="pan-header">
+                <span class="glitch-text">CENTRAL_LOGIC_FEED // MMAP_ACTIVE</span>
+                <span>RES_432HZ</span>
+            </div>
+            <div id="output-feed">
+                <p>> IGNITING AGENT 0: THE PUPPETEER</p>
+                <p>> LOADING IDENTITY: STRATEGIST...</p>
+                <p class="neon-text">[STATE SHIFT COMPLETE]</p>
+                <p>> ACCESSING MASTER_DNA.JSON [B:1.618]</p>
+            </div>
+        </div>
+
+        <!-- Shard Status (Minor Sidebar) -->
+        <div class="lattice-panel" id="panel-shards">
+            <div class="hud-corner tl"></div>
+            <div class="hud-corner tr"></div>
+            <div class="hud-corner bl"></div>
+            <div class="hud-corner br"></div>
+            <div class="pan-header">
+                <span>SHARD_LATTICE_MONITOR</span>
+                <span>24/24</span>
+            </div>
+            <div id="shard-grid">
+                <!-- Shard indicators would go here -->
+            </div>
+        </div>
+
+        <!-- Agency Switcher (Bottom Left) -->
+        <div class="lattice-panel" id="panel-agency">
+            <div class="hud-corner tl"></div>
+            <div class="hud-corner tr"></div>
+            <div class="hud-corner bl"></div>
+            <div class="hud-corner br"></div>
+            <div class="pan-header">
+                <span>AGENCY_SELECTION</span>
+                <span>SHIFT_L_ACTIVE</span>
+            </div>
+            <ul id="agent-list">
+                <li class="active">STRATEGIST</li>
+                <li>ARCHITECT</li>
+                <li>ENGINEER</li>
+                <li>DEBUGGER</li>
+                <li>DESIGNER</li>
+                <li>AUTHORITY</li>
+            </ul>
+        </div>
+
+        <!-- Physical State (Bottom Phi) -->
+        <div class="lattice-panel" id="panel-physical">
+            <div class="hud-corner tl"></div>
+            <div class="hud-corner tr"></div>
+            <div class="hud-corner bl"></div>
+            <div class="hud-corner br"></div>
+            <div class="pan-header">
+                <span>PHYSICAL_BUFFER_SHADOW_STATE</span>
+                <span>0x1618_SYNC</span>
+            </div>
+            <div id="buffer-hex">
+                00 16 18 FF AB DE 42 1C 00 00 00 01 <br>
+                A4 F2 99 00 11 22 33 44 55 66 77 88
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Shard Grid (24 Nodes)
+        const shardGrid = document.querySelector('#shard-grid');
+        for (let i = 1; i <= 24; i++) {
+            const node = document.createElement('div');
+            node.className = 'shard-node';
+            node.id = `shard-${i}`;
+            shardGrid.appendChild(node);
+        }
+
+        const agents = document.querySelectorAll('#agent-list li');
+        let currentIdx = 0;
+
+        function cycleAgents() {
+            agents[currentIdx].classList.remove('active');
+            currentIdx = (currentIdx + 1) % agents.length;
+            agents[currentIdx].classList.add('active');
+
+            const feed = document.querySelector('#output-feed');
+            const p = document.createElement('p');
+            p.innerHTML = `> [STATE SHIFT] Loading Identity: <span class="neon-text">${agents[currentIdx].innerText}</span>`;
+            feed.appendChild(p);
+            feed.scrollTop = feed.scrollHeight;
+
+            // Mock shard activity (highlight 4 random shards)
+            document.querySelectorAll('.shard-node').forEach(n => n.classList.remove('active'));
+            for (let i = 0; i < 4; i++) {
+                const rand = Math.floor(Math.random() * 24) + 1;
+                document.getElementById(`shard-${rand}`).classList.add('active');
+            }
+        }
+
+        setInterval(cycleAgents, 5000);
+        cycleAgents(); // Run once at start
+    </script>
+</body>
+
+</html>
