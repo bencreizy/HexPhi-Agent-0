@@ -1,0 +1,17 @@
+# Build artifacts
+/target/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Runtime
+/cache/shadow_state.bin
+/logs/*.json
+/build/release/
