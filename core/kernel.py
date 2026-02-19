@@ -2,6 +2,7 @@ import zmq
 import json
 import torch
 import time
+import os
 from micro_gpt_fizx import MicroGPT
 
 def main():
@@ -23,8 +24,18 @@ def main():
     
     print("Python Kernel Active. Model loaded with Phi resonance.")
     
+    knowledge_path = "knowledge/agent_behavior.json"
+    
     while True:
         try:
+            # Sync with behavior knowledge
+            if os.path.exists(knowledge_path):
+                with open(knowledge_path, 'r') as f:
+                    behavior = json.load(f)
+                    # Adjust model resonance based on coherence in repo
+                    coherence = behavior.get("coherence", 1.618)
+                    phi = 1.61803398875 * (coherence / 1.618)
+
             # Non-blocking receive for signals
             try:
                 msg = sub.recv_json(flags=zmq.NOBLOCK)

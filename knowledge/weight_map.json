@@ -1,44 +1,36 @@
 {
   "project": "HexPhi_Agent_0",
+  "engine": "MicroGPT-Fizx",
+  "version": "1.0.0",
+  "resonance": 1.61803398875,
   "identities": {
     "strategist": {
-      "adapter": "weights/adapters/strategist.lora",
-      "primary_shards": ["weights/shards/base_01.safetensors", "weights/shards/base_02.safetensors", "weights/shards/base_03.safetensors", "weights/shards/base_04.safetensors"],
-      "context_lock": "knowledge/master_dna.json",
-      "output_target": "logs/BIO.json"
+      "mode": "mission_planning",
+      "resonance_gate": 0.85
     },
     "architect": {
-      "adapter": "weights/adapters/arch.lora",
-      "primary_shards": ["weights/shards/base_05.safetensors", "weights/shards/base_06.safetensors", "weights/shards/base_07.safetensors", "weights/shards/base_08.safetensors"],
-      "context_lock": "knowledge/master_dna.json",
-      "output_target": "logs/PLAN.json"
+      "mode": "system_design",
+      "resonance_gate": 0.90
     },
     "engineer": {
-      "adapter": "weights/adapters/eng.lora",
-      "primary_shards": ["weights/shards/base_09.safetensors", "weights/shards/base_10.safetensors", "weights/shards/base_11.safetensors", "weights/shards/base_12.safetensors"],
-      "context_lock": "C:/Users/Jason/CodeDump",
-      "output_target": "workspace/src/main.rs"
+      "mode": "logic_synthesis",
+      "resonance_gate": 0.95
     },
     "debugger": {
-      "adapter": "weights/adapters/debug.lora",
-      "primary_shards": ["weights/shards/base_13.safetensors", "weights/shards/base_14.safetensors", "weights/shards/base_15.safetensors", "weights/shards/base_16.safetensors"],
-      "context_lock": "workspace/build_logs/",
-      "output_target": "workspace/src/fixes/audit.log"
+      "mode": "entropy_purge",
+      "resonance_gate": 0.88
     },
     "designer": {
-      "adapter": "weights/adapters/design.lora",
-      "primary_shards": ["weights/shards/base_17.safetensors", "weights/shards/base_18.safetensors", "weights/shards/base_19.safetensors", "weights/shards/base_20.safetensors"],
-      "context_lock": "assets/themes/",
-      "output_target": "workspace/ui/theme.css"
+      "mode": "aesthetic_alignment",
+      "resonance_gate": 0.80
     },
     "authority": {
-      "adapter": "weights/adapters/auth.lora",
-      "primary_shards": ["weights/shards/base_21.safetensors", "weights/shards/base_22.safetensors", "weights/shards/base_23.safetensors", "weights/shards/base_24.safetensors"],
-      "context_lock": "knowledge/security_protocols.json",
-      "output_target": "build/release/hexphi_v1"
+      "mode": "security_lock",
+      "resonance_gate": 0.98
     }
   },
-  "bridge_logic": {
-    "shared_buffer_path": "cache/shadow_state.bin"
+  "cns_config": {
+    "pub": "tcp://127.0.0.1:5556",
+    "sub": "tcp://127.0.0.1:5557"
   }
 }
