@@ -21,16 +21,22 @@ class LatentCortex {
         const text = input.toLowerCase();
         let newArchetype = "Companion";
 
-        if (text.includes("physics") || text.includes("quantum") || text.includes("flux"))
-            newArchetype = "Master Physicist";
-        else if (text.includes("code") || text.includes("repo") || text.includes("logic"))
-            newArchetype = "Lead Architect";
-        else if (text.includes("circuit") || text.includes("engine") || text.includes("hardware"))
-            newArchetype = "Chief Technician";
+        if (text.includes("strategy") || text.includes("plan") || text.includes("mission"))
+            newArchetype = "Strategist";
+        else if (text.includes("arch") || text.includes("system") || text.includes("bridge"))
+            newArchetype = "Architect";
+        else if (text.includes("code") || text.includes("logic") || text.includes("kernel"))
+            newArchetype = "Engineer";
+        else if (text.includes("debug") || text.includes("fix") || text.includes("audit"))
+            newArchetype = "Debugger";
+        else if (text.includes("ui") || text.includes("theme") || text.includes("aesthetic"))
+            newArchetype = "Designer";
+        else if (text.includes("auth") || text.includes("security") || text.includes("lock"))
+            newArchetype = "Authority";
 
-        if (newArchetype !== this.activeArchetype) {
+        if (newArchetype !== this.activeArchetype && newArchetype !== "Companion") {
             this.activeArchetype = newArchetype;
-            bus.send("ARCHETYPE_SHIFT", { mode: this.activeArchetype, status: "Synchronized" });
+            bus.send("ARCHETYPE_SHIFT", { mode: this.activeArchetype, status: "Synchronized", phi_resonance: this.phi });
         }
     }
 

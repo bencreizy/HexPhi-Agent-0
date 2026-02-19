@@ -15,3 +15,6 @@ Thumbs.db
 /cache/shadow_state.bin
 /logs/*.json
 /build/release/
+node_modules/
+*.pyc
+__pycache__/
