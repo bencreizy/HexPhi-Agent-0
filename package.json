@@ -1,0 +1,16 @@
+{
+    "name": "agent-zero",
+    "version": "1.0.0",
+    "description": "Agent Zero Model/Brain/Logic/Powers",
+    "main": "main.js",
+    "type": "module",
+    "scripts": {
+        "start": "electron ."
+    },
+    "dependencies": {
+        "electron": "^31.7.7",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "zeromq": "^6.5.0"
+    }
+}
