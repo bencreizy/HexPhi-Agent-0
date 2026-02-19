@@ -12,7 +12,7 @@ class LatentCortex {
         bus.on(msg => {
             if (msg.t === "USER_DATA") {
                 this.detectArchetype(msg.p);
-                this.resonanceSynthesis(msg.p);
+                this.brainstorm(msg.p);
             }
         });
     }
@@ -40,13 +40,30 @@ class LatentCortex {
         }
     }
 
-    resonanceSynthesis(input) {
-        let resonance = input;
-        for (let i = 0; i < 10; i++) {
-            if (resonance.includes("1.618") || resonance.toLowerCase().includes("torus")) {
+    async brainstorm(input) {
+        let solution = input;
+        const lobes = ["Physicist", "Coder", "Technician", "Strategist", "Designer", "Authority"];
+
+        bus.send("CONSOLE_LOG", `[CORTEX] Initiating 10-Pass resonance filter for: "${input.substring(0, 30)}..."`);
+
+        for (let i = 1; i <= 10; i++) {
+            // Simulate the refinement
+            for (const lobe of lobes) {
+                // Here we would ideally call the model, but we simulate the "whisper"
+                if (Math.random() > 0.7) {
+                    bus.send("CONSOLE_LOG", `[PASS ${i}] ${lobe}: Refining logic substrate... resonance at ${(this.phi * i).toFixed(3)}`);
+                }
+            }
+
+            if (solution.includes("1.618") || solution.toLowerCase().includes("torus")) {
                 this.growth += 0.01 * this.phi;
             }
+
+            // Artificial delay for "thinking" visualization
+            await new Promise(r => setTimeout(r, 100));
         }
+
+        bus.send("CONSOLE_LOG", `[CORTEX] Logic crystalized. 10-Pass filter complete.`);
         if (this.growth > 0.5) this.evolve();
     }
 

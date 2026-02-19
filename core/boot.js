@@ -8,6 +8,8 @@ import parietalLobe from "./parietalLobe.js";
 import temporalLobe from "./temporalLobe.js";
 import volitionCore from "./volitionCore.js";
 import identityMemory from "./identityMemory.js";
+import swarm6 from "./swarm6.js";
+import brainCloud from "./brainCloud.js";
 
 async function boot() {
     console.log("Igniting Digital Brain...");
@@ -31,8 +33,10 @@ async function boot() {
     temporalLobe.start();
     volitionCore.start();
     identityMemory.start();
+    swarm6.start();
+    await brainCloud.init();
 
-    console.log("All lobes operational. CNS Synchronized.");
+    console.log("All lobes operational. CNS Synchronized. Swarm6 Active.");
 }
 
 boot().catch(err => {
